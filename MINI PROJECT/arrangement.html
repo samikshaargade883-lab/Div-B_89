@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Arrangement</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <h1>Exam Hall Arrangement</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll No.</th>
+                <th>Branch</th>
+                <th>Exam</th>
+                <th>Date</th>
+                <th>Hall</th>
+                <th>Seat</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        
+<h2>Student Search</h2>
+<input id="search" type="text" placeholder="Search by name or roll number">
+<button onclick="loadStudents()">Search</button>
+
+
+        <tbody id="studentList"></tbody>
+    </table>
+
+    <p id="message"></p>
+
+    <button onclick="location.href='register.html'">
+        Register Student
+    </button>
+
+    <button onclick="location.href='index.html'">
+        Home
+    </button>
+
+</body>
+</html>

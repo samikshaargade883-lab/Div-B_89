@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Student Dashboard</h1>
+
+    <h2>Total Students: <span id="total">0</span></h2>
+
+    <h3>Registered Students</h3>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Exam</th>
+                <th>Hall</th>
+                <th>Seat</th>
+            </tr>
+        </thead>
+        <tbody id="dashboardList"></tbody>
+    </table>
+
+    <script>
+        fetch("/students")
+        .then(res => res.json())
+        .then(students => {
+            document.getElementById("total").innerText =
+                students.length;
+
+            const list = document.getElementById("dashboardList");
+
+            students.forEach(s => {
+                const row = list.insertRow();
+
+                [s.name, s.roll, s.exam, s.hall, s.seat]
+                .forEach(value => {
+                    row.insertCell().innerText = value ?? "";
+                });
+            });
+        });
+    </script>
+</body>
+</html>
