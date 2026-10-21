@@ -254,13 +254,16 @@ async function loadDashboard() {
             rooms.length;
 
 
-        document.getElementById("allocatedCount").textContent =
-            "0";
+                const res = await fetch(`${API}/allocation`);
+            const data = await res.json();
 
+            const count = data.allocation.reduce(
+                (sum, room) => sum + room.seats.length, 0
+            );
 
-        document.getElementById("unallocatedCount").textContent =
-            "0";
-
+            document.getElementById("allocatedCount").textContent = count;
+            document.getElementById("unallocatedCount").textContent =
+                students.length - count;
 
         renderStudents();
 
